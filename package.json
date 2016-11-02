@@ -4,7 +4,6 @@
     "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher/issues"
   },
   "dependencies": {
-    "http-proxy": "^1.15.2",
     "spawn-args": "^0.2.0"
   },
   "description": "A Karma launcher for Edge on VirtualBox.",
