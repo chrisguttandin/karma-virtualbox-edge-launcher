@@ -1,0 +1,30 @@
+{
+  "author": "Christoph Guttandin",
+  "bugs": {
+    "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher/issues"
+  },
+  "dependencies": {
+    "http-proxy": "^1.15.2"
+  },
+  "description": "A Karma launcher for Edge on VirtualBox.",
+  "devDependencies": {
+    "eslint-config-holy-grail": "^12.0.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "gruntify-eslint": "^3.1.0",
+    "load-grunt-config": "^0.19.2"
+  },
+  "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
+  "license": "MIT",
+  "main": "src/module.js",
+  "name": "karma-virtualbox-edge-launcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher.git"
+  },
+  "scripts": {
+    "precommit": "grunt lint",
+    "test": "grunt lint"
+  },
+  "version": "0.0.0"
+}
