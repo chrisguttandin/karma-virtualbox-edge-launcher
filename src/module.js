@@ -3,10 +3,11 @@
 const createProxyServer = require('http-proxy').createProxyServer;
 const http = require('http');
 const spawn = require('child_process').spawn;
+const spawnargs = require('spawn-args');
 
 const executeAndReturn = (command) => {
     const tokens = command.split(/\s/);
-    const shell = spawn(tokens.shift(), tokens);
+    const shell = spawn(tokens.shift(), spawnargs(tokens.join(' '), { removequotes: true }));
 
     return new Promise((resolve, reject) => {
         shell.on('exit', (code) => {
