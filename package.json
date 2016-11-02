@@ -12,6 +12,7 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "gruntify-eslint": "^3.1.0",
+    "husky": "^0.11.9",
     "load-grunt-config": "^0.19.2"
   },
   "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
