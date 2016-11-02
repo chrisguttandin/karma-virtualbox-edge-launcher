@@ -5,3 +5,50 @@
 [![tests](https://img.shields.io/travis/chrisguttandin/karma-virtualbox-edge-launcher/master.svg?style=flat-square)](https://travis-ci.org/chrisguttandin/karma-virtualbox-edge-launcher)
 [![dependencies](https://img.shields.io/david/chrisguttandin/karma-virtualbox-edge-launcher.svg?style=flat-square)](https://www.npmjs.com/package/karma-virtualbox-edge-launcher)
 [![version](https://img.shields.io/npm/v/karma-virtualbox-edge-launcher.svg?style=flat-square)](https://www.npmjs.com/package/karma-virtualbox-edge-launcher)
+
+The `karma-virtualbox-edge-launcher` can be used to run karma tests on Microsoft Edge. It requires
+one the [official virtual machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)
+provided by Microsoft which runs on VirtualBox.
+
+## Installation
+
+You can install the `karma-virtualbox-edge-launcher` via npm:
+
+```shell
+npm install karma-virtualbox-edge-launcher --save-dev
+```
+
+## Usage
+
+To run tests on Microsoft Edge Karma can be configured like that:
+
+```js
+// ...
+browsers: [
+    'VirtualBoxEdge14'
+],
+// ...
+customLaunchers: {
+    VirtualBoxEdge14: {
+        base: 'VirtualBoxEdge',
+        keepAlive: true,
+        snapshot: 'pristine',
+        uuid: '66975e0d-14f7-4d79-7b8b-b3f6496f0a14'
+    }
+}
+// ...
+```
+
+## Options
+
+### keepAlive
+
+If `true` the virtual machine will not be shut down after the tests.
+
+### snapshot
+
+A snapshot to which the virtual machine gets reset before starting it.
+
+### uuid
+
+The uuid of the virtual machine.
