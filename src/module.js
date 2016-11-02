@@ -96,7 +96,7 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
             executeAndCapture('VBoxManage list runningvms', log)
                 .then((result) => {
                     if (!result.includes(`{${ uuid }}`)) {
-                        return executeAndCapture(`VBoxManage snapshot {${ uuid }} restore ${ snapshot }`, log)
+                        return executeAndCapture(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log)
                             .then(() => executeAndCapture(`VBoxManage startvm {${ uuid }}`, log))
                             // Wait for the LoggedInUsers to become 0.
                             .then(() => executeAndCapture(`VBoxManage guestproperty wait {${ uuid }} /VirtualBox/GuestInfo/OS/LoggedInUsers --timeout 1800000`, log))
