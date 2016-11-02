@@ -23,7 +23,7 @@ const executeAndReturn = (command) => {
 const executeAndCapture = (command, log) => {
     const chunks = [];
     const tokens = command.split(/\s/);
-    const shell = spawn(tokens.shift(), tokens);
+    const shell = spawn(tokens.shift(), spawnargs(tokens.join(' '), { removequotes: true }));
 
     shell.stderr.on('readable', () => {
         const chunk = shell.stderr.read();
