@@ -47,7 +47,7 @@ If `true` the virtual machine will not be shut down after the tests.
 
 ### snapshot
 
-A snapshot to which the virtual machine gets reset before starting it.
+An optional snapshot to which the virtual machine gets reset before starting it.
 
 ### uuid
 
