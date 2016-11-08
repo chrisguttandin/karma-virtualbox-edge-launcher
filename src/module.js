@@ -3,22 +3,7 @@
 const spawn = require('child_process').spawn;
 const spawnargs = require('spawn-args');
 
-const executeAndReturn = (command) => {
-    const tokens = command.split(/\s/);
-    const shell = spawn(tokens.shift(), spawnargs(tokens.join(' '), { removequotes: true }));
-
-    return new Promise((resolve, reject) => {
-        shell.on('exit', (code) => {
-            if (code === 0) {
-                resolve(code);
-            } else {
-                reject(code);
-            }
-        });
-    });
-};
-
-const executeAndCapture = (command, log) => {
+const execute = (command, log) => {
     const chunks = [];
     const tokens = command.split(/\s/);
     const shell = spawn(tokens.shift(), spawnargs(tokens.join(' '), { removequotes: true }));
@@ -69,13 +54,13 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
 
     this
         .on('kill', (done) => {
-            executeAndReturn(`VBoxManage guestcontrol {${ uuid }} --username IEUser --password Passw0rd! run --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Stop-Process -processname MicrosoftEdge`)
+            execute(`VBoxManage guestcontrol {${ uuid }} --username IEUser --password Passw0rd! run --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Stop-Process -processname MicrosoftEdge`, log)
                 .catch(() => {
                     log.error('Failed to stop Microsoft Edge.');
                 })
                 .then(() => {
                     if (kill) {
-                        return executeAndCapture(`VBoxManage controlvm {${ uuid }} acpipowerbutton`, log);
+                        return execute(`VBoxManage controlvm {${ uuid }} acpipowerbutton`, log);
                     }
                 })
                 .then(() => done())
@@ -86,23 +71,23 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
                 });
         })
         .on('start', (url) => {
-            executeAndCapture('VBoxManage list runningvms', log)
+            execute('VBoxManage list runningvms', log)
                 .then((result) => {
                     if (!result.includes(`{${ uuid }}`)) {
                         let queue;
 
                         if (!!snapshot) {
-                            queue = executeAndCapture(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log);
+                            queue = execute(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log);
                         } else {
                             queue = Promise.resolve();
                         }
 
                         return queue
-                            .then(() => executeAndCapture(`VBoxManage startvm {${ uuid }}`, log))
+                            .then(() => execute(`VBoxManage startvm {${ uuid }}`, log))
                             // Wait for the LoggedInUsers to become 0.
-                            .then(() => executeAndCapture(`VBoxManage guestproperty wait {${ uuid }} /VirtualBox/GuestInfo/OS/LoggedInUsers --timeout 1800000`, log))
+                            .then(() => execute(`VBoxManage guestproperty wait {${ uuid }} /VirtualBox/GuestInfo/OS/LoggedInUsers --timeout 1800000`, log))
                             // Wait for the LoggedInUsers to become 1.
-                            .then(() => executeAndCapture(`VBoxManage guestproperty wait {${ uuid }} /VirtualBox/GuestInfo/OS/LoggedInUsers --timeout 1800000`, log))
+                            .then(() => execute(`VBoxManage guestproperty wait {${ uuid }} /VirtualBox/GuestInfo/OS/LoggedInUsers --timeout 1800000`, log))
                             .then(() => new Promise((resolve) => {
                                 // Wait one more minute to be sure that Windows is up and running.
                                 setTimeout(resolve, 60e3);
@@ -112,9 +97,15 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
                     }
                 })
                 .then(() => {
-                    return executeAndReturn(`VBoxManage guestcontrol {${ uuid }} --password Passw0rd! --username IEUser run --wait-stdout --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Start-Process shell:AppsFolder\\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge ${ url.replace(/localhost:9876/, '10.0.2.2:9876') }`);
+                    return execute(`VBoxManage guestcontrol {${ uuid }} --password Passw0rd! --username IEUser run --wait-stdout --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Start-Process shell:AppsFolder\\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge ${ url.replace(/localhost:9876/, '10.0.2.2:9876') }`, log);
                 })
-                .catch((err) => log.error(err));
+                .catch((err) => {
+                    if (err === 1) {
+                        log.error('Failed to start Microsoft Edge.');
+                    } else {
+                        log.error(err);
+                    }
+                });
         });
 }
 
