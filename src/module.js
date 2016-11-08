@@ -51,8 +51,6 @@ const executeAndCapture = (command, log) => {
 };
 
 function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
-    let proxyServer;
-
     baseBrowserDecorator(this);
 
     const kill = !args.keepAlive;
@@ -71,10 +69,6 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
 
     this
         .on('kill', (done) => {
-            if (proxyServer) {
-                proxyServer.close();
-            }
-
             executeAndReturn(`VBoxManage guestcontrol {${ uuid }} --username IEUser --password Passw0rd! run --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Stop-Process -processname MicrosoftEdge`)
                 .catch(() => {
                     log.error('Failed to stop Microsoft Edge.');
