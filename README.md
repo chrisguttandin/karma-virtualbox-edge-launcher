@@ -39,6 +39,18 @@ customLaunchers: {
 // ...
 ```
 
+If you explicitly specify the plugins in your config file as well, make sure to add
+`karma-virtualbox-edge-launcher` to the list of plugins.
+
+```js
+// ...
+plugins: [
+    // ...
+    'karma-virtualbox-edge-launcher'
+]
+// ...
+```
+
 ## Options
 
 ### keepAlive
