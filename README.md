@@ -51,6 +51,8 @@ plugins: [
 // ...
 ```
 
+You may also want to increase the `captureTimeout` of Karma, if your VM takes very long to boot.
+
 ## Options
 
 ### keepAlive
