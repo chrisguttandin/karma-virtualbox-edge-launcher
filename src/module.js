@@ -76,10 +76,10 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
                     if (!result.includes(`{${ uuid }}`)) {
                         let queue;
 
-                        if (!!snapshot) {
-                            queue = execute(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log);
-                        } else {
+                        if (snapshot === undefined) {
                             queue = Promise.resolve();
+                        } else {
+                            queue = execute(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log);
                         }
 
                         return queue
