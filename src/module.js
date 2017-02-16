@@ -92,9 +92,9 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
                                 // Wait one more minute to be sure that Windows is up and running.
                                 setTimeout(resolve, 60e3);
                             }));
-                    } else {
-                        log.info('The virtual machine is already running.');
                     }
+
+                    log.info('The virtual machine is already running.');
                 })
                 .then(() => {
                     return execute(`VBoxManage guestcontrol {${ uuid }} --password Passw0rd! --username IEUser run --wait-stdout --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Start-Process shell:AppsFolder\\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge ${ url.replace(/localhost:9876/, '10.0.2.2:9876') }`, log);
