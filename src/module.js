@@ -97,7 +97,7 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
                     log.info('The virtual machine is already running.');
                 })
                 .then(() => {
-                    return execute(`VBoxManage guestcontrol {${ uuid }} --password Passw0rd! --username IEUser run --wait-stdout --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Start-Process shell:AppsFolder\\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge ${ url.replace(/localhost:9876/, '10.0.2.2:9876') }`, log);
+                    return execute(`VBoxManage guestcontrol {${ uuid }} --password Passw0rd! --username IEUser run --wait-stdout --exe C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -- powershell.exe Start-Process shell:AppsFolder\\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge ${ url.replace(/localhost:/, '10.0.2.2:') }`, log);
                 })
                 .catch((err) => {
                     if (err === 1) {
