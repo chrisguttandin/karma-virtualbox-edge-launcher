@@ -39,6 +39,9 @@ customLaunchers: {
 // ...
 ```
 
+In case you want to know the uuids of your vms, you can run `VBoxManage list vms` to get the list of
+available vms.
+
 If you explicitly specify the plugins in your config file as well, make sure to add
 `karma-virtualbox-edge-launcher` to the list of plugins.
 
