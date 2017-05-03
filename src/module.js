@@ -1,5 +1,3 @@
-'use strict';
-
 const spawn = require('child_process').spawn;
 const spawnargs = require('spawn-args');
 
