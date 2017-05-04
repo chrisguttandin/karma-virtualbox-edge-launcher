@@ -15,6 +15,9 @@
     "husky": "^0.13.0",
     "load-grunt-config": "^0.19.2"
   },
+  "engines": {
+    "node": ">=6.10.3"
+  },
   "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
   "license": "MIT",
   "main": "src/module.js",
