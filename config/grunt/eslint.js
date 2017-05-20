@@ -15,5 +15,13 @@ module.exports = {
         src: [
             'src/**/*.js'
         ]
+    },
+    test: {
+        options: {
+            configFile: 'config/eslint/test.json'
+        },
+        src: [
+            'test/**/*.js'
+        ]
     }
 };

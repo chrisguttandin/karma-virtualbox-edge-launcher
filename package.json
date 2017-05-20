@@ -8,12 +8,16 @@
   },
   "description": "A Karma launcher for Edge on VirtualBox.",
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint-config-holy-grail": "^17.0.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.13.2",
     "gruntify-eslint": "^3.1.0",
     "husky": "^0.13.0",
-    "load-grunt-config": "^0.19.2"
+    "load-grunt-config": "^0.19.2",
+    "mocha": "^3.4.1"
   },
   "engines": {
     "node": ">=6.10.3"
@@ -31,7 +35,7 @@
   },
   "scripts": {
     "precommit": "grunt lint",
-    "test": "grunt lint"
+    "test": "grunt lint && grunt test"
   },
   "version": "1.1.3"
 }
