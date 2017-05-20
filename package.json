@@ -18,6 +18,9 @@
   "engines": {
     "node": ">=6.10.3"
   },
+  "files": [
+    "src/"
+  ],
   "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
   "license": "MIT",
   "main": "src/module.js",
