@@ -1,6 +1,7 @@
 const spawn = require('child_process').spawn;
 const spawnargs = require('spawn-args');
 
+// eslint-disable-next-line padding-line-between-statements
 const execute = (command, log) => {
     const chunks = [];
     const tokens = command.split(/\s/);
