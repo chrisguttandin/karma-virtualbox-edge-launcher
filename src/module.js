@@ -77,7 +77,7 @@ function VirtualBoxEdgeBrowser (args, baseBrowserDecorator, logger) {
 
                         if (snapshot === undefined) {
                             queue = Promise.resolve();
-                        } else {
+                        } else {
                             queue = execute(`VBoxManage snapshot {${ uuid }} restore "${ snapshot }"`, log);
                         }
 
