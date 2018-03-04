@@ -3,6 +3,11 @@
   "bugs": {
     "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher/issues"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "spawn-args": "^0.2.0"
   },
