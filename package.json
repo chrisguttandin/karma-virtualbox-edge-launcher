@@ -36,6 +36,11 @@
     "src/"
   ],
   "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
+  "husky": {
+    "hooks": {
+      "pre-commit": "grunt lint"
+    }
+  },
   "keywords": [
     "karma",
     "karma-launcher"
@@ -48,7 +53,6 @@
     "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher.git"
   },
   "scripts": {
-    "precommit": "grunt lint",
     "test": "grunt lint && grunt test"
   },
   "version": "1.1.8"
