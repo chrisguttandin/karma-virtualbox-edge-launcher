@@ -13,7 +13,7 @@
     },
     "description": "A Karma launcher for Edge on VirtualBox.",
     "devDependencies": {
-        "@commitlint/cli": "^12.1.1",
+        "@commitlint/cli": "^12.1.4",
         "@commitlint/config-angular": "^12.1.1",
         "chai": "^4.3.4",
         "commitizen": "^4.2.4",
