@@ -36,12 +36,6 @@
         "src/"
     ],
     "homepage": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher",
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint --edit --extends @commitlint/config-angular",
-            "pre-commit": "pretty-quick --config config/prettier/config.json --staged && grunt lint"
-        }
-    },
     "keywords": [
         "karma",
         "karma-launcher"
@@ -54,6 +48,7 @@
         "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher.git"
     },
     "scripts": {
+        "prepare": "husky install",
         "test": "grunt lint && grunt test"
     },
     "version": "2.0.1"
