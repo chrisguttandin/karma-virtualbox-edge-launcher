@@ -2,7 +2,6 @@
 
 **A Karma launcher for Edge on VirtualBox.**
 
-[![dependencies](https://img.shields.io/david/chrisguttandin/karma-virtualbox-edge-launcher.svg?style=flat-square)](https://github.com/chrisguttandin/karma-virtualbox-edge-launcher/network/dependencies)
 [![version](https://img.shields.io/npm/v/karma-virtualbox-edge-launcher.svg?style=flat-square)](https://www.npmjs.com/package/karma-virtualbox-edge-launcher)
 
 The `karma-virtualbox-edge-launcher` can be used to run karma tests on Microsoft Edge. It requires
