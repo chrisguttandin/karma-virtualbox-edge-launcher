@@ -48,6 +48,7 @@
         "url": "https://github.com/chrisguttandin/karma-virtualbox-edge-launcher.git"
     },
     "scripts": {
+        "lint:config": "eslint --config config/eslint/config.json --ext .js --report-unused-disable-directives config/",
         "prepare": "husky install",
         "test": "grunt lint && grunt test"
     },
