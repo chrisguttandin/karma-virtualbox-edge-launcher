@@ -27,7 +27,7 @@
         "lint-staged": "^15.2.2",
         "load-grunt-config": "^4.0.1",
         "mocha": "^10.3.0",
-        "prettier": "^3.2.4"
+        "prettier": "^3.2.5"
     },
     "engines": {
         "node": ">=16.1.0"
