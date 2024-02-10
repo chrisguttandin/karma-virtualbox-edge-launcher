@@ -30,7 +30,7 @@
         "prettier": "^3.2.5"
     },
     "engines": {
-        "node": ">=16.1.0"
+        "node": ">=18.2.0"
     },
     "files": [
         "src/"
