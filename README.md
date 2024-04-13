@@ -4,7 +4,7 @@ This module is deprecated and no longer maintained.
 
 # karma-virtualbox-edge-launcher
 
-**A Karma launcher for Edge on VirtualBox.**
+**!!! DEPRECATED !!! A Karma launcher for Edge on VirtualBox.**
 
 The `karma-virtualbox-edge-launcher` can be used to run karma tests on Microsoft Edge. It requires
 one the [official virtual machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)
