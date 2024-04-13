@@ -6,8 +6,6 @@ This module is deprecated and no longer maintained.
 
 **A Karma launcher for Edge on VirtualBox.**
 
-[![version](https://img.shields.io/npm/v/karma-virtualbox-edge-launcher.svg?style=flat-square)](https://www.npmjs.com/package/karma-virtualbox-edge-launcher)
-
 The `karma-virtualbox-edge-launcher` can be used to run karma tests on Microsoft Edge. It requires
 one the [official virtual machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)
 provided by Microsoft which runs on VirtualBox.
