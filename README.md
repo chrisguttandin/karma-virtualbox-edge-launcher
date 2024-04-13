@@ -1,3 +1,7 @@
+# Status: **!!! DEPRECATED !!!**
+
+This module is deprecated and no longer maintained.
+
 # karma-virtualbox-edge-launcher
 
 **A Karma launcher for Edge on VirtualBox.**
